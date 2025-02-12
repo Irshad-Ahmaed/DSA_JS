@@ -165,6 +165,23 @@ class LinkedList {
         this.head = null;
         this.length = 0;
     }
+
+    // Reverse the LL
+    reverse(){
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+        let next = temp;
+        let prev = null;
+
+        for(let i=0; i < this.length; i++){
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+    }
 }
 
 const myLinkedList = new LinkedList(1);
@@ -178,4 +195,6 @@ myLinkedList.unshift(0);
 console.log(myLinkedList.insert(1,5));
 // console.log(myLinkedList.size());
 // console.log(myLinkedList.clear());
+console.log(myLinkedList);
+myLinkedList.reverse();
 console.log(myLinkedList);
